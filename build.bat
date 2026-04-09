@@ -1,2 +1,2 @@
 @echo off
-dart compile exe bin/lsptest.dart
+dart compile exe bin/lsp_helper.dart
