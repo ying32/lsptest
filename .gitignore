@@ -5,3 +5,4 @@
 /bin/*.exe
 /*.lock
 /run.bat
+/.idea
