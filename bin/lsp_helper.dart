@@ -34,6 +34,7 @@ final envPathSeparator = Platform.isWindows ? ";" : ":";
 String? getDartFullPath() {
   for (String path
       in Platform.environment["PATH"]?.split(envPathSeparator) ?? []) {
+    if (path.isEmpty) continue;
     // 如果需要的话，添加一个路径分割符
     if (!path.endsWith(Platform.pathSeparator)) {
       path += Platform.pathSeparator;
@@ -105,7 +106,7 @@ void main(List<String> args) async {
 }
 
 /// 一段固定的返回结果（数据来自zed启动dart返回的结果，并增加了一个`"triggerCharacters":["."]`字段）
-// TODO: 这个随zed的更新，可能需要定期更新吧？？？
+// TODO: 这个随zed或者dart的更新，可能需要定期更新吧？？？
 final initializeResultJson = jsonDecode('''{
   "capabilities": {
     "textDocumentSync": {"change": 2},
