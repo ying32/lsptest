@@ -2,7 +2,7 @@ zed中dart无法使用`.`来自动完成代码。
 
 ### 原因分析
 
-这个问题我一开始以为就是这样的，但搜索issue发现别人也有，在最新版本的zed中也有这个问题。于是我分析了下，发现是dart lsp在初始的时候返回的结果中未包含`triggerCharacters`字段，zed认为不需要。进一步测试发现dart lsp初始时返回的数据是很少的，与实际zed中获取到的dart lsp初始数据相差甚远，经过分析dart的代码，似乎是通过其它事件动态注册的的，可能Zed并没有处理那个或者什么其它情况下忽略掉这个了吧，所以`.`无效。
+这个问题我一开始以为就是这样的，但搜索issue发现别人也有，在最新版本的zed中也有这个问题。于是我分析了下，发现是dart lsp在初始的时候返回的结果中未包含`triggerCharacters`字段，zed认为不需要。进一步测试发现dart lsp初始时返回的数据是很少的，与实际zed中获取到的dart lsp初始数据相差甚远，经过分析dart的代码(`dart-sdk-main\sdk-main\pkg\analysis_server\lib\src\lsp\constants.dart:dartCompletionTriggerCharacters`和`dart-sdk-main\sdk-main\pkg\analysis_server\lib\src\lsp\handlers\handler_completion.dart:CompletionRegistrations`)，似乎是通过其它事件动态注册的的，可能Zed并没有处理那个或者什么其它情况下忽略掉这个了吧，所以`.`无效。
 
 ```json
 "completionProvider":{
