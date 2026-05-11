@@ -195,7 +195,6 @@ void main(List<String> args) async {
         }
       }
       await LspMessageDecoder.writeMessage(stdout, message);
-      return;
     } catch (e, s) {
       printDebug("object stdout exception: $e\n$s");
     }

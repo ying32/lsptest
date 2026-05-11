@@ -6,6 +6,10 @@
 
 **这是一个`Zed的bug`，在dart向客户端（Zed）注册事件`client/registerCapability`中，dart返回的结果中发现此事件中存在多个`textDocument/completion`节点，其中有未包含`triggerCharacters`的字段，而且在有字段的后面，而Zed在处理的时候是使用的覆盖模式，造成前一个结果被后面的null字段给替换了。**
 
+----
+
+**我已经向Zed项目提交了一个issue: [Zed issue 56428](https://github.com/zed-industries/zed/issues/56428)**
+
 ### 编译（因为只测试了Windows下的）
 
 **无第三方依赖，可以直接编译，之前版本的已经在macOS下编译测试过了**
